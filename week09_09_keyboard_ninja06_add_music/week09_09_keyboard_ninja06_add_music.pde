@@ -9,6 +9,7 @@ void setup() {
   sound1 = new SoundFile(this, "Intro Song_Final.mp3");
   sound2 = new SoundFile(this, "Gong.mp3");
   sound3 = new SoundFile(this, "In Game Music.mp3");
+  background(board); //先畫背景, 以免看起來像當機的灰色畫面
   sound1.play();
 }
 float appleX = 100, appleY = 500, appleVX = 5, appleVY= -30;
@@ -42,13 +43,13 @@ void draw() {
   textSize(50);
   textAlign(CENTER,CENTER);
   fill(255,255,0);
-  if (state==0) text("Press Any Key to Start", 300, 200);
+  if (state==0) text("Press any Key to Start", 300, 200);
   else if(state==1){
     textSize(100);
     countdown--;
     if(countdown%60 == 0){
-      sound2.stop();
-      sound2.play();
+      sound2.stop(); // 同一個音樂關掉
+      sound2.play(); // 再播一次, 有點像打鼓的節奏的感覺
     }
     if(countdown>60*3) text("3", 300, 200);
     else if(countdown>60*2) text("2", 300, 200);
