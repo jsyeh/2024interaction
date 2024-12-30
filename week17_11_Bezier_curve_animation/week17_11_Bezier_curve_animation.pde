@@ -62,6 +62,8 @@ void mousePressed() {
   pt.add(new PVector(mouseX, mouseY));
 }
 void mouseDragged() {
+  PVector prev = pt.get(pt.size()-1);
+  if( dist(prev.x, prev.y, mouseX, mouseY)<30) return;
   pt.add(new PVector(mouseX, mouseY));
 }
 void mouseReleased(){
